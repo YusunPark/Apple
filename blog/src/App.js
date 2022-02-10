@@ -25,27 +25,27 @@ function App(){
       <div className="black-nav">
         <div>개발 blog</div>
       </div>
-     
-
-      <div className="list">
-       <button onClick={ changeTitle }> 수정버튼 </button>
-        <h3> { title[0] } <span onClick={ ()=>{ setNum(num + 1) } } >👍🏻</span> { num }</h3>
-        <p>2월 17일 발행</p>
-        <hr/>
-      </div>
-      <div className="list">
-        <h3>{ title[1] }</h3>
-        <p>2월 17일 발행</p>
-        <hr/>
-      </div>
+    
+      {
+        title.map(function(a) {
+          return( 
+            <div className="list">
+              <button onClick={ changeTitle }> 수정버튼 </button>
+              <h3> { a } <span onClick={ ()=>{ setNum(num + 1) } } >👍🏻</span> { num }</h3>
+              <p>2월 17일 발행</p>
+              <hr/>
+            </div>
+            );
+        })
+      }
 
       <button onClick={ ()=>{ changeModal(!modal) } }>모달버튼</button>
-      
       {
         modal === true
         ? <Modal />
         : null
       }
+
 
     </div>
   )
