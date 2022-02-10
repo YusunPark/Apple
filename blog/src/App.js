@@ -4,20 +4,14 @@ import './App.css';
 function App(){
  
   let [title, setTitle] = useState( ['남자 코트 추천', '강남 우동 맛집'] );
-  let [ num, setNum ] = useState(0);
-
+  let [num, setNum ] = useState( [0, 0] );
   let [modal, changeModal] = useState(false);
+  let index = [0,1];
 
-  function changeTitle() {
-    var newArray = [...title];
-    newArray[0] = '여자 코트 추천';
-    setTitle( newArray );
-  }
-
-  function changeTitle() {
-    var newArray = [...title];
-    newArray[0] = '여자 코트 추천';
-    setTitle( newArray );
+  function changeNum(i) {
+    var newArray = [...num];
+    newArray[i] = num[i] + 1;
+    setNum( newArray );
   }
 
   return (
@@ -25,13 +19,13 @@ function App(){
       <div className="black-nav">
         <div>개발 blog</div>
       </div>
-    
+      <button onClick={ ()=>{ changeModal(!modal) } }>모달열고닫기</button>
+
       {
-        title.map(function(a) {
+        index.map(function(a) {
           return( 
             <div className="list">
-              <button onClick={ changeTitle }> 수정버튼 </button>
-              <h3> { a } <span onClick={ ()=>{ setNum(num + 1) } } >👍🏻</span> { num }</h3>
+              <h3> { title[a] } <span onClick={ ()=>{ changeNum(a) } } >👍🏻</span> { num[a] }</h3>
               <p>2월 17일 발행</p>
               <hr/>
             </div>
@@ -39,10 +33,9 @@ function App(){
         })
       }
 
-      <button onClick={ ()=>{ changeModal(!modal) } }>모달버튼</button>
       {
         modal === true
-        ? <Modal />
+        ? <Modal title={title} />
         : null
       }
 
@@ -51,10 +44,10 @@ function App(){
   )
 }
 
-function Modal() {
+function Modal(props) {
   return (
     <div className='modal'>
-    <h2>제목</h2>
+    <h2> { props.title[0] } </h2>
     <p>날짜</p>
     <p>상세내용</p>
   </div>
