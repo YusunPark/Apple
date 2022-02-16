@@ -6,8 +6,8 @@ function App(){
   let [title, setTitle] = useState( ['남자 코트 추천', '강남 우동 맛집'] );
   let [num, setNum ] = useState( [0, 0] );
   let [modal, changeModal] = useState(false);
-  let index = [0,1];
   let [ck, changeCk] = useState(0);
+  let [input, changeInput] = useState('');
 
   function changeNum(i) {
     var newArray = [...num];
@@ -21,25 +21,41 @@ function App(){
     setTitle(newArray)
   }
 
+  function addList(input) {
+    var newArray = [...title];
+    newArray.unshift(input);
+    setTitle(newArray);
+
+    var newNumber = [...num];
+    newNumber.unshift(0);
+    setNum(newNumber);
+  }
+
   return (
     <div className="App">
       <div className="black-nav">
         <div>개발 blog</div>
       </div>
+
       <button onClick={ ()=>{ changeModal(!modal) } }>모달열고닫기</button>
       <button onClick={ ()=>{ sortTile() } }>가나다 정렬</button>
 
       {
-        index.map(function(a) {
+        title.map(function(title, i) {
           return( 
             <div className="list">
-              <h3 onClick={ ()=>{ changeCk(a) } }> { title[a] } <span onClick={ ()=>{ changeNum(a) } } >👍🏻</span> { num[a] }</h3>
+              <h3 onClick={ ()=>{ changeCk(i) } }> { title } <span onClick={ ()=>{ changeNum(i) } } >👍🏻</span> { num[i] }</h3>
               <p>2월 17일 발행</p>
               <hr/>
             </div>
             );
         })
       }
+
+      <div className='publish'>
+        <input onChange={ (e)=>{changeInput(e.target.value)} }/>
+        <button onClick={ ()=>{ addList(input) } }>저장</button>
+      </div>
 
       {
         modal === true
