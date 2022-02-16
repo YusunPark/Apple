@@ -7,6 +7,7 @@ function App(){
   let [num, setNum ] = useState( [0, 0] );
   let [modal, changeModal] = useState(false);
   let index = [0,1];
+  let [ck, changeCk] = useState(0);
 
   function changeNum(i) {
     var newArray = [...num];
@@ -32,7 +33,7 @@ function App(){
         index.map(function(a) {
           return( 
             <div className="list">
-              <h3> { title[a] } <span onClick={ ()=>{ changeNum(a) } } >👍🏻</span> { num[a] }</h3>
+              <h3 onClick={ ()=>{ changeCk(a) } }> { title[a] } <span onClick={ ()=>{ changeNum(a) } } >👍🏻</span> { num[a] }</h3>
               <p>2월 17일 발행</p>
               <hr/>
             </div>
@@ -42,7 +43,7 @@ function App(){
 
       {
         modal === true
-        ? <Modal title={title} />
+        ? <Modal title={title} index={ck} />
         : null
       }
 
@@ -54,7 +55,7 @@ function App(){
 function Modal(props) {
   return (
     <div className='modal'>
-    <h2> { props.title[0] } </h2>
+    <h2> { props.title[props.index] } </h2>
     <p>날짜</p>
     <p>상세내용</p>
   </div>
