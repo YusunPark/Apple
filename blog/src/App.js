@@ -14,12 +14,19 @@ function App(){
     setNum( newArray );
   }
 
+  function sortTile() {
+    var newArray = [...title];
+    newArray = newArray.sort();
+    setTitle(newArray)
+  }
+
   return (
     <div className="App">
       <div className="black-nav">
         <div>개발 blog</div>
       </div>
       <button onClick={ ()=>{ changeModal(!modal) } }>모달열고닫기</button>
+      <button onClick={ ()=>{ sortTile() } }>가나다 정렬</button>
 
       {
         index.map(function(a) {
