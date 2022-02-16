@@ -62,11 +62,34 @@ function App(){
         ? <Modal title={title} index={ck} />
         : null
       }
-
+      <Profile></Profile>
 
     </div>
   )
 }
+
+
+class Profile extends React.Component {
+  constructor(){
+    super();  
+    this.state = {name: 'Kein', age:30}
+  }
+
+  render() {
+    return(
+      <div>
+        프로맆 {this.state.name}
+        <button onClick={ ()=>{ this.setState( {name: 'park'} ) } }>버튼</button>
+      </div>
+    )
+  }
+
+}
+
+
+
+
+
 
 function Modal(props) {
   return (
