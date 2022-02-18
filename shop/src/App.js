@@ -33,10 +33,10 @@ function App() {
         </Container>
       </Navbar>
       <Switch>
-        {" "}
+        
         <Route exact path="/">
           <div className="jumbotron">
-            <h2>20% Seal off</h2>
+            <h2>20% off</h2>
             <div>
               <span>asdfasdfasdfadfasdf</span>
             </div>
@@ -50,8 +50,8 @@ function App() {
             </div>
           </div>
         </Route>
-        <Route path="/detail">
-          <Detail />
+        <Route path="/detail/:id">
+          <Detail shoes={shoes} />
         </Route>
         <Route path="/:id">
           <div>아무거나 적었을때 이거 보이주기!</div>
@@ -66,11 +66,15 @@ function Item(props) {
     <div className="col-md-4">
       <div className="col-c">
         <img
-          src= {"https://codingapple1.github.io/shop/shoes"+ (props.i + 1) +".jpg"}
+          src={
+            "https://codingapple1.github.io/shop/shoes" + (props.i + 1) + ".jpg"
+          }
           width="100%"
         />
         <h4>{props.item.title}</h4>
-        <p>{props.item.content} & {props.item.price}</p>
+        <p>
+          {props.item.content} & {props.item.price}
+        </p>
       </div>
     </div>
   );
