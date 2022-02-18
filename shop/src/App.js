@@ -2,9 +2,11 @@
 
 import React, { useState } from "react";
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
+import { Link, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import Data from "./data.js";
+import Detail from "./Detail";
 
 function App() {
   let [shoes, changeShoes] = useState(Data);
@@ -15,27 +17,46 @@ function App() {
         <Container>
           <Navbar.Brand href="#home">YuuShop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link>
+              {" "}
+              <Link to="/">Home</Link>
+            </Nav.Link>
+            <Nav.Link>
+              {" "}
+              <Link to="/detail">Detail</Link>
+            </Nav.Link>
+            <Nav.Link>
+              {" "}
+              <Link to="/">My Page</Link>
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
-      <div className="jumbotron">
-        <h2>20% Seal off</h2>
-        <div>
-          <span>asdfasdfasdfadfasdf</span>
-        </div>
-        <Button variant="primary">Primary</Button>{" "}
-      </div>
-
-      <div className="container">
-        <div className="row">
-          {shoes.map((item, i)=>{
-            return <Item item={item} i={i}/>;
-          })}
-        </div>
-      </div>
+      <Switch>
+        {" "}
+        <Route exact path="/">
+          <div className="jumbotron">
+            <h2>20% Seal off</h2>
+            <div>
+              <span>asdfasdfasdfadfasdf</span>
+            </div>
+            <Button variant="primary">Primary</Button>{" "}
+          </div>
+          <div className="container">
+            <div className="row">
+              {shoes.map((item, i) => {
+                return <Item item={item} i={i} />;
+              })}
+            </div>
+          </div>
+        </Route>
+        <Route path="/detail">
+          <Detail />
+        </Route>
+        <Route path="/:id">
+          <div>아무거나 적었을때 이거 보이주기!</div>
+        </Route>
+      </Switch>
     </div>
   );
 }
