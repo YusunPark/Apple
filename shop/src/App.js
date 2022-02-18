@@ -1,9 +1,14 @@
-import React from "react";
+/*eslint-disable*/
+
+import React, { useState } from "react";
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
 
 import "./App.css";
+import Data from "./data.js";
 
 function App() {
+  let [shoes, changeShoes] = useState(Data);
+
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -26,37 +31,25 @@ function App() {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <div className="col-c">
-              <img
-                src="https://codingapple1.github.io/shop/shoes1.jpg"
-                width="100%"
-              />
-              <h4>상품명</h4>
-              <p>상품설명 / 가격</p>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="col-c">
-              <img
-                src="https://codingapple1.github.io/shop/shoes2.jpg"
-                width="100%"
-              />
-              <h4>상품명</h4>
-              <p>상품설명 / 가격</p>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="col-c">
-              <img
-                src="https://codingapple1.github.io/shop/shoes3.jpg"
-                width="100%"
-              />
-              <h4>상품명</h4>
-              <p>상품설명 / 가격</p>
-            </div>
-          </div>
+          {shoes.map((item, i)=>{
+            return <Item item={item} i={i}/>;
+          })}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function Item(props) {
+  return (
+    <div className="col-md-4">
+      <div className="col-c">
+        <img
+          src= {"https://codingapple1.github.io/shop/shoes"+ (props.i + 1) +".jpg"}
+          width="100%"
+        />
+        <h4>{props.item.title}</h4>
+        <p>{props.item.content} & {props.item.price}</p>
       </div>
     </div>
   );
