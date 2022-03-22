@@ -1,6 +1,4 @@
 
-@import './_reset.scss';
-
 
 $mainColor : #ff0000;
 
@@ -8,4 +6,50 @@ $mainColor : #ff0000;
     color: $mainColor;
 }
 
+
+@mixin 함수() {
+    background-color: #eeeeee;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+}
+
+.my-alert{
+    @include 함수();
+}
+
+.my-alert-red {
+    @extend .my-alert;
+    background-color: #ff9591;
+    
+}
+
+
+
+.my-alert p {
+    margin-bottom: 0;
+}
+
+
+// div.container h4 {
+//     color: blue;
+// }
+
+// div.container p {
+//     color: green;
+// }
+
+
+// // 네스팅 문법
+// div.container {
+//     h4 {
+//         color: blue;
+//     }
+
+//     p {
+//         color: green;
+//     }
+// }
 

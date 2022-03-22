@@ -22,6 +22,8 @@ function Detail(props) {
       <Box>
         <TitleName className="blue" >Detail</TitleName>
       </Box>
+      <div className="my-alert"><p>재고가 얼마 남지 않았습니다.</p></div>
+      <div className="my-alert-red"><p>재고가 얼마 남지 않았습니다.</p></div>
       <div className="row">
         <div className="col-md-6">
           {/* eslint-disable-next-line jsx-a11y/alt-text */}
