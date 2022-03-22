@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 
-// import "./App.css";
+import "./Detail.scss";
 
 let Box = styled.div`
   padding: 20px;
@@ -20,7 +20,7 @@ function Detail(props) {
   return (  
     <div className="container">
       <Box>
-        <TitleName 색상="blue" >Detail</TitleName>
+        <TitleName className="blue" >Detail</TitleName>
       </Box>
       <div className="row">
         <div className="col-md-6">
